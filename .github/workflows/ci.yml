@@ -14,6 +14,11 @@ jobs:
         env:
           SHELLCHECK_OPTS: -x -i SC2086
         with:
-          # We can't use multiple lines format because this action just embeds
-          # this value into words of 'for' control statement to ignore paths.
-          ignore_paths: accept/lib ignore
+          # NOTE: Use just multiple-line format, not YAML's block styles. This
+          # value is considered a whitespace-separated string. This action
+          # merely embeds this value into words of the 'for' control statement
+          # to ignore paths, so multiple line strings probably break
+          # shellscript's syntax.
+          ignore_paths:
+            accept/lib
+            ignore
