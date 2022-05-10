@@ -14,6 +14,6 @@ jobs:
         env:
           SHELLCHECK_OPTS: -x -i SC2086
         with:
-          ignore_paths: |
-            accept/lib
-            ignore
+          # We can't use multiple lines format because this action just embeds
+          # this value into words of 'for' control statement to ignore paths.
+          ignore_paths: accept/lib ignore
