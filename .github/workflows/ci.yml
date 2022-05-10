@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+
+      - uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -x -i SC2086
+          ignore_paths: |
+            accept/lib
+            ignore
